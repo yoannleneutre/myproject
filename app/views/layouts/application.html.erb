@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Myproject</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="banner">
+	<%= image_tag("medicineemblem.jpg", :size=> "100x50") %>
+	my project
+</div>
+
+<div id="nav">
+	<ul>		
+		<li> <%= link_to "Patient", patients_path %></li>
+		<li> <%= link_to "Doctor", doctors_path %></li>
+		<li> <%= link_to "Schedule", schedules_path %></li>
+		<li> <%= link_to "Appointment", appointments_path %></li>
+		
+	</ul>
+</div>
+
+<%= yield %>
+
+</body>
+</html>

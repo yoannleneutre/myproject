@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  adress: MyText
+  latitude: 1.5
+  longitude: 1.5
+  phonenumber: 1
+  sex: MyString
+  field: MyString
+  email: MyString
+  dob: 2015-01-27
+
+two:
+  name: MyString
+  adress: MyText
+  latitude: 1.5
+  longitude: 1.5
+  phonenumber: 1
+  sex: MyString
+  field: MyString
+  email: MyString
+  dob: 2015-01-27

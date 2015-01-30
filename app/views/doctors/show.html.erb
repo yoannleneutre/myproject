@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @doctor.name %>
+</p>
+
+<p>
+  <b>Adress:</b>
+  <%= @doctor.adress %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @doctor.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @doctor.longitude %>
+</p>
+
+<p>
+  <b>Phonenumber:</b>
+  <%= @doctor.phonenumber %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @doctor.sex %>
+</p>
+
+<p>
+  <b>Specialism:</b>
+  <%= @doctor.specialism %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @doctor.email %>
+</p>
+
+<p>
+  <b>DoB:</b>
+  <%= @doctor.dob %>
+</p>
+
+<p>
+  <b>Appointments</b>
+</p>
+<% if @doctor.appointments.empty? %>
+	<p> <%= @doctor.name %> has no appointment for the moment</p>
+<% else %>
+	<p> These are the appointments Dr.<% @doctor.name %> has :</p>
+		<% @doctor.appointments.each do |a| %>
+			<p> <%= a.time %>  ==>   <%= a.patient.name %>
+			</p>
+	<br\><br\><br\>
+	<% end %>
+<% end %>	
+
+
+
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>
