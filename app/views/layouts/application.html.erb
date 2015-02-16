@@ -5,15 +5,32 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+ 
 </head>
 <body>
 <div id="banner">
-	<%= image_tag("medicineemblem.jpg", :size=> "100x50") %>
-	my project
+<%= link_to( image_tag("medicineemblem.jpg", :size=> "100x50"), root_path) %>
+    <%= link_to "My project", root_path %>
+	<p align=right><i> Yoann Leneutre | </i><%= link_to "Github link", 'https://github.com/yoannleneutre/myproject' %> </p>
 </div>
 
+
 <div id="nav">
-	<ul>		
+	<ul>
+		<% if !signed_in? && !patientsigned_in? %>
+			<li><%= link_to "Sign In as a doctor", signin_path %></li>
+			<li><%= link_to "Sign In as a patient", patientsignin_path %></li>
+		<% else	%>
+			<% if !signed_in? %>
+				<li>Signed in as Mr(s) <%= @current_patient.name %></li>
+				<li><%= link_to "Sign out", patientsignout_path %></li>
+			<% else %>	
+			<li>Signed in as Dr. <%= @current_doctor.name %></li>
+			<li><%= link_to "Sign out", signout_path %></li>
+			<% end %>
+		<% end %>	
+		
+		
 		<li> <%= link_to "Patient", patients_path %></li>
 		<li> <%= link_to "Doctor", doctors_path %></li>
 		<li> <%= link_to "Schedule", schedules_path %></li>
@@ -24,5 +41,5 @@
 
 <%= yield %>
 
-</body>
+</body>	
 </html>

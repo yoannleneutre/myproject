@@ -10,8 +10,7 @@
     <th>Email</th>
     <th>Dob</th>
     <th></th>
-    <th></th>
-    <th></th>
+
   </tr>
 
 <% @doctors.each do |doctor| %>
@@ -23,9 +22,9 @@
     <td><%= doctor.specialism %></td>
     <td><%= doctor.email %></td>
     <td><%= doctor.dob %></td>
-    <td><%= link_to 'Show', doctor %></td>
-    <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-    <td><%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', doctor %>
+    <br /><%= link_to 'Edit', edit_doctor_path(doctor) %>
+    <br /><%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

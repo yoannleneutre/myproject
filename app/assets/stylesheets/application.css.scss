@@ -7,16 +7,21 @@
  *= require_self
  *= require_tree . 
 */
+
+
 #banner {
-  background: #9c9;
+  background: white;
   padding: 10px;
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
-  color: #282;
+  color: grey;
   text-align: center;
 
   img {
     float: left;
+    border: 0 none;
+    max-width: 100%;
+    vertical-align: middle;
   }
 }
 
@@ -72,6 +77,7 @@
       li {
         list-style: none;
 
+
         a {
           color: #bfb;
           font-size: small;
@@ -83,36 +89,80 @@
 } #end columns
 
 #nav {
-  float: right;
+  float: center;
 }
 
 #nav {
-  background-color: #00FFFF;
-  padding: 0 0.7em;
-  white-space: nowrap;
+    width: 100%;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-right: none;
+  
 }
 
 #nav ul {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 #nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0.2em 0;
+  list-style: none;
+    float: left;
+    text-align: center;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #ccc;
+    width: 16.6667%; /* fallback for non-calc() browsers */
+    width: calc(100% / 6);
+    box-sizing: border-box;
 }
 
 #nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
+    display: block;
+    text-decoration: none;
+    color: #616161;
+    padding: 10px 0;
 }
 
-#nav ul li a:visited {
-  color: #09c;
-}
 
 #nav ul li a:hover {
   text-decoration: underline;
   }
+  
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+    width: 100%;
+    border: 1px solid #ccc;
+    border-right: none;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+      overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+  width: 16.6667%; /* fallback for non-calc() browsers */
+    width: calc(100% / 6);
+    box-sizing: border-box;
+  
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: center; 
+  width: 16.6667%; /* fallback for non-calc() browsers */
+    width: calc(100% / 6);
+    box-sizing: border-box;
+}
+
+
+  
+
 

@@ -44,6 +44,7 @@ class DoctorsController < ApplicationController
 
     respond_to do |format|
       if @doctor.save
+		Blogmailer.register(@doctor)
         format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
         format.json { render json: @doctor, status: :created, location: @doctor }
       else

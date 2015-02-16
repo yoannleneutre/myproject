@@ -1,7 +1,31 @@
 Myproject::Application.routes.draw do
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  get "sessions/newpatient"
+
+  get "sessions/createpatient"
+
+  get "sessions/destroypatient"
+
   get "pages/home"
 
   get "pages/about"
+  
+  resources :patients do
+	resources :posts
+end	
+  
+  match '/signin' => 'sessions#new'
+  match '/signout' => 'sessions#destroy' #controller#methodname
+  
+  match '/patientsignout' => 'sessions#destroypatient'
+  match '/patientsignin' => 'sessions#newpatient'
+  match '/createpatient' => 'sessions#createpatient'
+  
 
   resources :appointments
 
@@ -10,6 +34,9 @@ Myproject::Application.routes.draw do
   resources :doctors
 
   resources :patients
+  
+  resources :sessions
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

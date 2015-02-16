@@ -1,0 +1,18 @@
+<h1 align=center>Sign in as a patient</h1>
+<%= form_tag createpatient_path do %>
+	<table align=center>
+	<tr>
+		<td><%= label_tag :email %>
+		<td><%= text_field_tag :email, params[:email] %>
+	</tr>
+	<tr>
+		<td><%= label_tag :password %>
+		<td><%= password_field_tag :password %>
+	</tr>
+
+	</table>
+	<p align=middle><%= submit_tag "Sign in" %></p>
+	
+		<p align=center> Not yet registered? <br />
+	<%= link_to "Sign Up as a patient !", new_patient_path %></p>
+<% end %>	
