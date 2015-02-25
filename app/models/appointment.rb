@@ -5,5 +5,11 @@ class Appointment < ActiveRecord::Base
 	
 	validates :time, presence: true
 	validates :reason, presence: true
+	validate :validate_datepast
+
+	
+	def validate_datepast
+		errors.add(:time, "cannot be in the past") if time.past?
+	end	
 	
 end

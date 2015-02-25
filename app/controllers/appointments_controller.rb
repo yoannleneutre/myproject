@@ -1,6 +1,9 @@
 class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
+   #before_filter :authoriseDoctor, :only => [:new, :create, :edit, :update, :drsappointment]
+   before_filter :authorisePatient, :only => [:new, :create, :edit, :update]
+
   def index
     @appointments = Appointment.all
 
@@ -10,6 +13,24 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def drsappointment
+  unless !signed_in?
+	@appointments = Appointment.where("doctor_id = ?", @current_doctor.id)
+	respond_to do |format|
+		format.html 
+	end	
+   end	
+end	
+
+def patientappointment
+  unless !patientsigned_in?
+	@appointments = Appointment.where("patient_id = ?", @current_patient.id)
+	respond_to do |format|
+		format.html 
+	end	
+   end	
+end	
+  
   # GET /appointments/1
   # GET /appointments/1.json
   def show
@@ -41,7 +62,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(params[:appointment])
-
+	@appointment.patient_id = @current_patient.id
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
@@ -74,10 +95,16 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to appointments_url }
-      format.json { head :no_content }
+	if signed_in?
+		respond_to do |format|
+		  format.html { redirect_to mydoctorappointments_path, notice: 'The appointment was successfully deleted' }
+		  format.json { head :no_content }
+		end  
+	else 
+		respond_to do |format|
+		  format.html { redirect_to mypatientappointments_path, notice: 'The appointment was successfully deleted' }
+		  format.json { head :no_content }  
+		end	  
     end
   end
 end

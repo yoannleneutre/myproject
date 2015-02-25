@@ -1,6 +1,9 @@
 class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
+  
+  before_filter :authoriseDoctor, :only => [:edit, :update]
+  
   def index
     @doctors = Doctor.all
 
@@ -9,6 +12,15 @@ class DoctorsController < ApplicationController
       format.json { render json: @doctors }
     end
   end
+  
+    def drsprofile
+  unless !signed_in?
+	@appointments = Appointment.where("doctor_id = ?", @current_doctor.id)
+	respond_to do |format|
+		format.html 
+	end	
+   end	
+end	
 
   # GET /doctors/1
   # GET /doctors/1.json
@@ -45,7 +57,7 @@ class DoctorsController < ApplicationController
     respond_to do |format|
       if @doctor.save
 		Blogmailer.register(@doctor)
-        format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Doctor was successfully created.' }
         format.json { render json: @doctor, status: :created, location: @doctor }
       else
         format.html { render action: "new" }
@@ -69,7 +81,18 @@ class DoctorsController < ApplicationController
       end
     end
   end
-
+  
+  def search
+	@doctors = Doctor.search params[:q]
+	unless @doctors.empty?
+		render 'index'
+	else
+		flash[:notice] = 'No doctor name matches that search'
+		render 'index'
+	end
+  end
+  
+  
   # DELETE /doctors/1
   # DELETE /doctors/1.json
   def destroy

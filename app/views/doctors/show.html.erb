@@ -1,65 +1,55 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
   <%= @doctor.name %>
 </p>
-
-<p>
-  <b>Adress:</b>
-  <%= @doctor.adress %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @doctor.latitude %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @doctor.longitude %>
-</p>
-
-<p>
-  <b>Phonenumber:</b>
-  <%= @doctor.phonenumber %>
-</p>
-
 <p>
   <b>Sex:</b>
   <%= @doctor.sex %>
 </p>
-
+<p>
+  <b>DoB:</b>
+  <%= @doctor.dob %>
+</p>
+<p>
+	<b> Age:</b>
+	<%= @doctor.age %>
+</p>
 <p>
   <b>Specialism:</b>
   <%= @doctor.specialism %>
 </p>
-
+<p>
+  <b>Address:</b>
+  <%= @doctor.adress %>
+</p>
+<p>
+	<b>Location:</b> <br>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@doctor.adress}%2C#{@doctor.adress}" %>
+</p>
+<p>
+  <b>Phonenumber:</b>
+  <%= @doctor.phonenumber %>
+</p>
 <p>
   <b>Email:</b>
   <%= @doctor.email %>
 </p>
 
-<p>
-  <b>DoB:</b>
-  <%= @doctor.dob %>
-</p>
-
+ 
 <p>
   <b>Appointments</b>
 </p>
 <% if @doctor.appointments.empty? %>
-	<p> <%= @doctor.name %> has no appointment for the moment</p>
+	<p> You have no appointment for the moment</p>
 <% else %>
-	<p> These are the appointments Dr.<% @doctor.name %> has :</p>
+	<p> These are the appointments you have :</p>
 		<% @doctor.appointments.each do |a| %>
-			<p> <%= a.time %>  ==>   <%= a.patient.name %>
+			<p> <i><%= a.time %></i>  with   Mr(s)<%= a.patient.name %>
 			</p>
 	<br\><br\><br\>
 	<% end %>
 <% end %>	
 
-
-
-<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Edit', edit_doctor_path(@doctor) %>
 <%= link_to 'Back', doctors_path %>

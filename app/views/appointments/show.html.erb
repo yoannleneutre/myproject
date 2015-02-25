@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <b>Time:</b>
@@ -20,11 +19,6 @@
   <%= @appointment.doctor.name %>
 </p>
 
-<p>
-  <b>Schedule:</b>
-  <%= @appointment.schedule_id %>
-</p>
-
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<%= link_to 'Back', mypatientappointments_path %>

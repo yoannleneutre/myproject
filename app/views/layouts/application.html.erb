@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
  
 </head>
 <body>
@@ -20,25 +21,32 @@
 		<% if !signed_in? && !patientsigned_in? %>
 			<li><%= link_to "Sign In as a doctor", signin_path %></li>
 			<li><%= link_to "Sign In as a patient", patientsignin_path %></li>
+			<li> <%= link_to "How to process", about_path %></li>
+			<li> <%= link_to "List of doctors", doctors_path %></li>
+		<li> <%= link_to "Appointment", new_appointment_path %></li>
 		<% else	%>
 			<% if !signed_in? %>
-				<li>Signed in as Mr(s) <%= @current_patient.name %></li>
+				<li><p align=middle>Signed in as Mr(s) <%= @current_patient.name %></p></li>
 				<li><%= link_to "Sign out", patientsignout_path %></li>
+				<li> <%= link_to "My profile", @current_patient %></li>
+				<li> <%= link_to "List of doctors", doctors_path %></li>
+				<li> <%= link_to "My Appointments", mypatientappointments_path %></li>
 			<% else %>	
-			<li>Signed in as Dr. <%= @current_doctor.name %></li>
+			<li><p align=middle>Signed in as Dr. <%= @current_doctor.name %></p></li>
 			<li><%= link_to "Sign out", signout_path %></li>
+			<li> <%= link_to "My profile", @current_doctor %></li>
+			<li> <%= link_to "List of doctors", doctors_path %></li>
+			<li> <%= link_to "Appointment", mydoctorappointments_path %></li>
 			<% end %>
-		<% end %>	
-		
-		
-		<li> <%= link_to "Patient", patients_path %></li>
-		<li> <%= link_to "Doctor", doctors_path %></li>
-		<li> <%= link_to "Schedule", schedules_path %></li>
-		<li> <%= link_to "Appointment", appointments_path %></li>
-		
+		<% end %>			
 	</ul>
 </div>
-
+<br />
+<% flash.each do |key, value| %>
+	<div id="notice">
+	<i><%= value %> </i>
+	</div>
+<% end %>
 <%= yield %>
 
 </body>	

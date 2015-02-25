@@ -18,14 +18,18 @@ Myproject::Application.routes.draw do
   resources :patients do
 	resources :posts
 end	
-  
+
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy' #controller#methodname
   
   match '/patientsignout' => 'sessions#destroypatient'
   match '/patientsignin' => 'sessions#newpatient'
   match '/createpatient' => 'sessions#createpatient'
-  
+  match '/search' => 'doctors#search'
+  match '/mydoctorappointments' => 'appointments#drsappointment'
+  match '/mypatientappointments' => 'appointments#patientappointment'
+  match '/about' => 'pages#about'
+
 
   resources :appointments
 
@@ -87,7 +91,7 @@ end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-root :to => 'pages#home'
+  root :to => 'pages#home'
 
   # See how all your routes lay out with "rake routes"
 

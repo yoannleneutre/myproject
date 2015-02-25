@@ -1,9 +1,22 @@
-<h1 align=center>Welcome </h1>
+<h1 align=center> Welcome </h1>
 <br />
-<p align=center >Please feel free to make an appointment. </p>
-<br />
-<p align=center> Not yet registered? <br />
-<%= link_to "Sign Up as a doctor !", new_doctor_path %>
- | <%= link_to "Sign Up as a patient !", new_patient_path %>
-</p>
+<p align=center >Please feel free to 
+	<% unless !signed_in? %>
+		<%= link_to 'check your appointment(s)', mydoctorappointments_path %>
+		<% else %>
+		<%= link_to 'make an appointment', new_appointment_path %>
+	<% end %>
+	<br />	
+<p align=center><%= image_tag("appointment.jpg", :size=> "1044x450") %></p>
+<p><% if !signed_in? && !patientsigned_in? %>
+	<p align=center> Not yet registered? <br />
+	<%= link_to "Sign Up as a doctor !", new_doctor_path %>
+	| <%= link_to "Sign Up as a patient !", new_patient_path %>
+	</p>	
+		
+
+
+
+<% end %>
+
 

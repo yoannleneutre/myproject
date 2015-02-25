@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  
+  #before_filter :authoriseNotSignDoctor, :only => [:createpatient, :newpatient]
+  
   def new
   end
 
@@ -30,10 +33,10 @@ class SessionsController < ApplicationController
 	patient = Patient.find_by_email(params[:email])
 	if patient && patient.authenticate(params[:password])
 		session[:patient_id] = patient.id
-		redirect_to session[:return_to] || root_path
+		redirect_to patient[:return_to] || root_path
 	else
 		flash[:error] = "Invalid email/password combination"
-		render 'new'
+		render 'newpatient'
 	end	
   end
 

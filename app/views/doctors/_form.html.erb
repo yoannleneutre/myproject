@@ -22,24 +22,17 @@
   </div> 
   <div class="field">
     <%= f.label :"Date of Birth *" %><br />
-    <%= f.date_select :dob %>
+    <%= f.text_field :dob, id: :datepicker %>	
   </div>
   <div class="field">
     <%= f.label :speciality %><br />
     <%= f.select :specialism, ['Allergology','Anaesthetics','Dentistry','Dermatology','Dermatology','General Practice','Gynecology','Neurology','Ophthalmology','Orthopaedics','Paediatrics','Plastic surgery','Psychiatry','Radiotherapy','Rheumatology'] %>
   </div>  
   <div class="field">
-    <%= f.label :"Adress *"%><br />
+    <%= f.label :"Address *"%><br />
     <%= f.text_area :adress %>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </div>
+
   <div class="field">
     <%= f.label :"Phonenumber" %><br />
     <%= f.telephone_field :phonenumber %>

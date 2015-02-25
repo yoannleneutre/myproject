@@ -11,21 +11,16 @@
     </div>
   <% end %>
   
-   <div class="field">
-    <%= f.label :patient_id %><br />
-    <%= f.collection_select :patient_id, Patient.all, :id, :name %>
-   </div>
+  <div class="field">
+  <p> You are going to make an appointment as <b><%= @current_patient.name %></b> </p>  
+
    <div class="field">
     <%= f.label :doctor_id %><br />
     <%= f.collection_select :doctor_id, Doctor.all, :id, :name %>
-   </div>
-   <div class="field">
-    <%= f.label :schedule_id %> (this choice will be delete) <br />
-    <%= f.collection_select :schedule_id, Schedule.all, :id, :doctor_id %>
-   </div>   
+   </div> 
    <div class="field">
     <%= f.label :time %><br />
-    <%= f.datetime_select :time %>
+    <%= f.datetime_select :time, :minute_step => 20, start_year: Date.today.year, :hour_start => 9 %>
   </div>
   <div class="field">
     <%= f.label :reason %><br />

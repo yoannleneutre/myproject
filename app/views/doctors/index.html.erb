@@ -1,34 +1,34 @@
 <h1>Listing doctors</h1>
+<div id="search">
+	<%= render :partial => 'doctors/search' %>
+	<br>
+</div>	
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Adress</th>
-    <th>Phonenumber</th>
     <th>Sex</th>
-    <th>Specialism</th>
-    <th>Email</th>
-    <th>Dob</th>
-    <th></th>
+	<th>Age</th>
+	<th>Specialism</th>
+	<th>Adress</th>
+    <th>Phonenumber</th>
+    <th>Email</th>   
 
   </tr>
 
 <% @doctors.each do |doctor| %>
   <tr>
     <td><%= doctor.name %></td>
-    <td><%= doctor.adress %></td>
-    <td><%= doctor.phonenumber %></td>
     <td><%= doctor.sex %></td>
-    <td><%= doctor.specialism %></td>
+	<td><%= doctor.age %></td>
+	<td><%= doctor.specialism %></td>
+	<td><%= doctor.adress %></td>
+    <td><%= doctor.phonenumber %></td>        
     <td><%= doctor.email %></td>
-    <td><%= doctor.dob %></td>
-    <td><%= link_to 'Show', doctor %>
-    <br /><%= link_to 'Edit', edit_doctor_path(doctor) %>
-    <br /><%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete %></td>
+    
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Doctor', new_doctor_path %>

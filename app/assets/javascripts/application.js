@@ -11,5 +11,18 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+
+$('#datepicker').datepicker({
+	dateFormat: 'dd-mm-yy',
+
+	changeMonth: true,
+	changeYear: true,
+	
+	yearRange: "-115:+0",
+});	
+});

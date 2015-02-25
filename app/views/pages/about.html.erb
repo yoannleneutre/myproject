@@ -1,2 +1,17 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<h3 align=center>Welcome to the largest site in the world of medical appointment making (of course)</h3>
+<p>The whole website is designed to :
+<br /> • facilitate your appointment decision as a Patient 
+<br /> • allow your patients to make appointments online as a Doctor.</p>
+
+<br />
+<b> For this, you have to sign up </b>
+<br /> <p> You can sign up in the tab of <%= link_to "Doctor Sign In", signin_path %> or in the tab of <%= link_to "Patient Sign In", patientsignin_path %>, depending on the function you want to register in.
+<br /> Both are present in the <%= link_to "home page", root_path %> </p>
+
+<br />
+<b> After have signed up, please sign in </b> clicking on the appropriate tab.
+
+<p> You can now <%= link_to "make an appointment", new_appointment_path %> </p> 
+
+
+

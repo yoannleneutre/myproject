@@ -1,44 +1,42 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
   <%= @patient.name %>
 </p>
-
-<p>
-  <b>Adress:</b>
-  <%= @patient.adress %>
-</p>
-
-<p>
-  <b>Phonenumber:</b>
-  <%= @patient.phonenumber %>
-</p>
-
 <p>
   <b>Sex:</b>
   <%= @patient.sex %>
 </p>
-
+<p>
+  <b>Dob:</b>
+  <%= @patient.dob %>
+</p>
+<p>
+	<b> Age:</b>
+	<%= @patient.age %>
+</p>
+<p>
+  <b>Adress:</b>
+  <%= @patient.adress %>
+</p>
+<p>
+  <b>Phonenumber:</b>
+  <%= @patient.phonenumber %>
+</p>
 <p>
   <b>Email:</b>
   <%= @patient.email %>
 </p>
 
-<p>
-  <b>Dob:</b>
-  <%= @patient.dob %>
-</p>
 
-<p>
-  <b>Appointments</b>
-</p>
+
+
 <% if @patient.appointments.empty? %>
-	<p> <%= @patient.name %> has no appointment for the moment</p>
+	<p> You have no appointment for the moment</p>
 <% else %>
-	<p> These are the appointments <%= @patient.name %> has :</p>
+	<b> These are the appointments you have :</b>
 		<% @patient.appointments.each do |a| %>
-			<p> <%= a.time %>  ==>   <%= a.doctor.name %>
+			<p> <i><%= a.time %></i>  with   Dr.<%= a.doctor.name %>
 			</p>
 	<br\><br\><br\>
 	<% end %>
@@ -46,4 +44,4 @@
 
 
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Back', root_path %>
